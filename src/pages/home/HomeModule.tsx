@@ -21,6 +21,7 @@ const HomeModule = () => {
   return (
     <div>
       <h1>hola</h1>
+      <h1>soy el ejemplo de card user</h1>
       <div>
         <h1>Soy ejemplo</h1>
         <h1>Soy el contador {contador} </h1>
@@ -39,3 +40,5 @@ const HomeModule = () => {
 };
 
 export default HomeModule;
+
+
