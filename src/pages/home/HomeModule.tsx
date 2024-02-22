@@ -1,11 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./home.module.css";
+import axios from "axios";
+import {
+  IdataApi,
+  IpokemonInfo,
+} from "../../interfaces/pokemonInformation/pokemon-interface";
+import PokeCard from "./PokeCard";
+import PokeCardParams from "./PokeCardParams";
 //import style from "../../";
 
 const HomeModule = () => {
   const [cont, setcont] = useState<number>(2);
   const [color, setcolor] = useState<boolean>(false);
   const [input, setinput] = useState<string>("");
+  const [pokemonInfo, setpokemonInfo] = useState<IpokemonInfo | null>(null);
+
+  async function getInfo() {
+    try {
+      const response: IdataApi = await axios.get(
+        "https://pokeapi.co/api/v2/pokemon/51"
+      );
+      console.log(response);
+      console.log(response.data);
+      setpokemonInfo(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    //first
+    getInfo();
+  }, []);
+  //}, [cont,color,input]);
 
   let contador = 2;
   const algo = 2;
@@ -33,6 +60,10 @@ const HomeModule = () => {
   //
   return (
     <div>
+      <h1>
+        hola soy el pokemon: {pokemonInfo !== null ? pokemonInfo.name : ""}
+      </h1>
+      <h1>hola soy el pokemon: {pokemonInfo?.name} </h1>
       <h1>hola mi nombre es:</h1>
       <h1>{input} </h1>
       <h1>soy el ejemplo de card user</h1>
@@ -59,6 +90,15 @@ const HomeModule = () => {
         >
           presioname
         </button>
+      </div>
+      <div style={{ display: "flex" }}>
+        <PokeCard />
+        {pokemonInfo !== null && (
+          <PokeCardParams
+            imagen={pokemonInfo.sprites.front_default}
+            name={pokemonInfo.name}
+          />
+        )}
       </div>
     </div>
   );
