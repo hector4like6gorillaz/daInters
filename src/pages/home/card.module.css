@@ -1,0 +1,28 @@
+.container-div {
+  border: 2px solid;
+  height: 450px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.div-img-container {
+  width: 250px;
+  height: auto;
+  border: 1px solid red;
+}
+
+.img-poke {
+  width: 100%;
+  height: auto;
+}
+
+.div-name {
+  border: 1px solid;
+  width: 100%;
+}
+
+.p-name {
+  padding-inline: 30px;
+}
