@@ -7,31 +7,36 @@ import {
 } from "../../interfaces/pokemonInformation/pokemon-interface";
 import PokeCard from "./PokeCard";
 import PokeCardParams from "./PokeCardParams";
+import { getPokemonApiInfo } from "../../services/pokeInfo-service";
+import PokeCardApi from "./components/PokeCardApi";
 //import style from "../../";
 
 const HomeModule = () => {
-  const [cont, setcont] = useState<number>(2);
+  const [cont, setcont] = useState<number>(1);
   const [color, setcolor] = useState<boolean>(false);
   const [input, setinput] = useState<string>("");
   const [pokemonInfo, setpokemonInfo] = useState<IpokemonInfo | null>(null);
 
-  async function getInfo() {
-    try {
-      const response: IdataApi = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon/51"
-      );
-      console.log(response);
-      console.log(response.data);
-      setpokemonInfo(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   useEffect(() => {
     //first
-    getInfo();
-  }, []);
+    /*
+    getInfo().then((dat) => {
+      console.log(dat);
+    });
+    */
+    getPokemonApiInfo({ pokeId: cont })
+      .then((dat) => {
+        console.log("este es el resultado de la api");
+        console.log(dat);
+        setpokemonInfo(dat!);
+      })
+      .catch((e) => {
+        console.log(e);
+      })
+      .finally(() => {
+        //setLoading(false)
+      });
+  }, [cont]);
   //}, [cont,color,input]);
 
   let contador = 2;
@@ -99,6 +104,28 @@ const HomeModule = () => {
             name={pokemonInfo.name}
           />
         )}
+      </div>
+      <div>
+        {pokemonInfo !== null && (
+          <>
+            <p>el numero en la pokedex es {pokemonInfo.id}</p>
+            <p>
+              {pokemonInfo.name} tiene una altura de {pokemonInfo.height}
+            </p>
+            <p>
+              {pokemonInfo.name} pesa {pokemonInfo.weight}kg
+            </p>
+          </>
+        )}
+      </div>
+      <div>
+        {[1, 2, 3, 4, 5, 6, 7, 8, 12, 16, 25].map((value, index) => {
+          return (
+            <div key={index}>
+              <PokeCardApi idPokemon={value} />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
