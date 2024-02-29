@@ -7,15 +7,28 @@ import {
 } from "../../interfaces/pokemonInformation/pokemon-interface";
 import PokeCard from "./PokeCard";
 import PokeCardParams from "./PokeCardParams";
-import { getPokemonApiInfo } from "../../services/pokeInfo-service";
+import {
+  getPokemonApiInfo,
+  getPokemonNamesApi,
+} from "../../services/pokeInfo-service";
 import PokeCardApi from "./components/PokeCardApi";
+import { useNavigate } from "react-router-dom";
+import {
+  IPokeNames,
+  ResultNamesPokemons,
+} from "../../interfaces/pokemonInformation/pokemon-names-interface";
 //import style from "../../";
 
 const HomeModule = () => {
+  const navigate = useNavigate();
+
   const [cont, setcont] = useState<number>(1);
   const [color, setcolor] = useState<boolean>(false);
   const [input, setinput] = useState<string>("");
   const [pokemonInfo, setpokemonInfo] = useState<IpokemonInfo | null>(null);
+  const [pokeNames, setpokeNames] = useState<null | ResultNamesPokemons[]>(
+    null
+  );
 
   useEffect(() => {
     //first
@@ -24,10 +37,17 @@ const HomeModule = () => {
       console.log(dat);
     });
     */
+    getPokemonNamesApi()
+      .then((dat) => {
+        //console.log(dat);
+        setpokeNames(dat!.results);
+      })
+      .catch((e) => console.log(e));
+
     getPokemonApiInfo({ pokeId: cont })
       .then((dat) => {
         console.log("este es el resultado de la api");
-        console.log(dat);
+        //console.log(dat);
         setpokemonInfo(dat!);
       })
       .catch((e) => {
@@ -73,6 +93,7 @@ const HomeModule = () => {
       <h1>{input} </h1>
       <h1>soy el ejemplo de card user</h1>
       <div
+        onClick={() => navigate("pokemon")}
         className={`${style["div-contenedor-card"]} 
         ${color ? style["color-green"] : style["color-red"]}`}
       ></div>
@@ -119,14 +140,32 @@ const HomeModule = () => {
         )}
       </div>
       <div>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 12, 16, 25].map((value, index) => {
-          return (
-            <div key={index}>
-              <PokeCardApi idPokemon={value} />
-            </div>
-          );
-        })}
+        {pokeNames !== null &&
+          pokeNames.map((value, index) => {
+            const iDpokemon = index + 1;
+            return (
+              <p key={index} onClick={() => navigate(`pokemon/${iDpokemon}`)}>
+                {iDpokemon}.- {value.name}
+              </p>
+            );
+          })}
       </div>
+      {/** 
+       
+      <div>
+        {Array.from({ length: 100 }, (_, index) => index + 1).map(
+          (value, index) => {
+            return (
+              <div key={index}>
+                <p>{value} </p>
+               
+                <PokeCardApi idPokemon={value} />
+              </div>
+            );
+          }
+        )}
+      </div>
+              */}
     </div>
   );
 };
