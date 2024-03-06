@@ -1,22 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./home.module.css";
-import axios from "axios";
-import {
-  IdataApi,
-  IpokemonInfo,
-} from "../../interfaces/pokemonInformation/pokemon-interface";
+import { IpokemonInfo } from "../../interfaces/pokemonInformation/pokemon-interface";
 import PokeCard from "./PokeCard";
 import PokeCardParams from "./PokeCardParams";
 import {
   getPokemonApiInfo,
   getPokemonNamesApi,
 } from "../../services/pokeInfo-service";
-import PokeCardApi from "./components/PokeCardApi";
 import { useNavigate } from "react-router-dom";
-import {
-  IPokeNames,
-  ResultNamesPokemons,
-} from "../../interfaces/pokemonInformation/pokemon-names-interface";
+import { ResultNamesPokemons } from "../../interfaces/pokemonInformation/pokemon-names-interface";
 //import style from "../../";
 
 const HomeModule = () => {
@@ -83,6 +75,11 @@ const HomeModule = () => {
   //impri();
 
   //
+
+  const alPresionar = () => {
+    console.log("soy el resultadode presionar");
+    navigate(`pokemon/${15}`);
+  };
   return (
     <div>
       <h1>
@@ -91,7 +88,7 @@ const HomeModule = () => {
       <h1>hola soy el pokemon: {pokemonInfo?.name} </h1>
       <h1>hola mi nombre es:</h1>
       <h1>{input} </h1>
-      <h1>soy el ejemplo de card user</h1>
+      <h1 className ={`${style['h1-clickeable']}`} onClick={alPresionar}>soy el ejemplo de card user</h1>
       <div
         onClick={() => navigate("pokemon")}
         className={`${style["div-contenedor-card"]} 

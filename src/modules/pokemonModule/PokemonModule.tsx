@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import style from "./poke.module.css";
 import PokeCard from "../../pages/home/PokeCard";
 import PokeCardParams from "../../pages/home/PokeCardParams";
 import { IpokemonInfo } from "../../interfaces/pokemonInformation/pokemon-interface";
@@ -35,15 +36,51 @@ const PokemonModule = () => {
       .finally(() => {});
   }, []);
   return (
-    <div style={{ display: "flex" }}>
+    <div>
       <button onClick={() => navigate("/")}>atras</button>
-      <PokeCard />
-      {pokemonInfo !== null && (
-        <PokeCardParams
-          imagen={pokemonInfo.sprites.front_default}
-          name={pokemonInfo.name}
-        />
-      )}
+      <div className={`${style["cards-div-container"]}`}>
+        <PokeCard />
+        <PokeCard />
+        <PokeCard />
+        <PokeCard />
+        <PokeCard />
+        <PokeCard />
+        <PokeCard />
+        {pokemonInfo !== null && (
+          <PokeCardParams
+            imagen={pokemonInfo.sprites.front_default}
+            name={pokemonInfo.name}
+          />
+        )}
+      </div>
+      <div className={`${style["div-container-ejemplos"]}`}>
+        <div className={`${style["cards-div-container-2"]}`}>
+          <PokeCard />
+          <PokeCard />
+          <PokeCard />
+          <PokeCard />
+          <PokeCard />
+          <PokeCard />
+          <PokeCard />
+          {pokemonInfo !== null && (
+            <PokeCardParams
+              imagen={pokemonInfo.sprites.front_default}
+              name={pokemonInfo.name}
+            />
+          )}
+        </div>
+        <div className={`${style["ejemplo-flex"]}`}>
+          <div className={`${style["centrado-circulo"]}`}></div>
+        </div>
+        <div className={`${style["ejemplo-flex-mitad-superior"]}`}>
+          <div className={`${style["centrado-circulo-padre"]}`}>
+            <div className={`${style["centrado-circulo"]}`}></div>
+          </div>
+          <div className={`${style["centrado-circulo-padre-2"]}`}>
+            <div className={`${style["centrado-circulo"]}`}></div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

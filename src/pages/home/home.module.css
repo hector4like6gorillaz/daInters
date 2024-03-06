@@ -9,3 +9,7 @@
 .color-green {
   background: green;
 }
+
+.h1-clickeable {
+  cursor: pointer;
+}

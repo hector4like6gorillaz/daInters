@@ -1,0 +1,61 @@
+.cards-div-container {
+  border: 2px solid red;
+  display: flex;
+  overflow: hidden;
+  overflow-x: scroll;
+  column-gap: 32px;
+}
+.cards-div-container-2 {
+  border: 2px solid green;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  row-gap: 32px;
+  width: fit-content;
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.div-container-ejemplos {
+  display: flex;
+  column-gap: 20px;
+}
+.ejemplo-flex {
+  border: 2px solid blue;
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centrado-circulo {
+  background: red;
+  width: 50px;
+  height: 50px;
+  border-radius: 9999999999px;
+}
+
+.ejemplo-flex-mitad-superior {
+  border: 2px solid purple;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.centrado-circulo-padre {
+  border: 1px green solid;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.centrado-circulo-padre-2 {
+  border: 1px green solid;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
