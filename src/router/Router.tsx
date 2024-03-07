@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeModule from "../pages/home/HomeModule";
 import PokemonModule from "../modules/pokemonModule/PokemonModule";
 import EvolveLineModule from "../modules/evolveModule/EvolveLineModule";
+import IconsModule from "../modules/iconsModule/IconsModule";
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
         <Route path="/pokemon/:id" element={<PokemonModule />} />
         <Route path="/evolve-line/:id" element={<EvolveLineModule />} />
 
+        <Route path="/icons" element={<IconsModule />} />
         {/*
         
         <Route element={<NormalRoute />}>
