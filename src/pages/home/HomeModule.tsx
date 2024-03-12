@@ -9,9 +9,17 @@ import {
 } from "../../services/pokeInfo-service";
 import { useNavigate } from "react-router-dom";
 import { ResultNamesPokemons } from "../../interfaces/pokemonInformation/pokemon-names-interface";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store/store";
+import { aumentarContador, aumentarContadoren1, decrementarContadoren1 } from "../../redux/reducers/auth";
 //import style from "../../";
 
 const HomeModule = () => {
+  const { contador: reduxContainer } = useSelector(
+    (state: RootState) => state.ejemplo
+  );
+  const dispatch = useDispatch()
+  
   const navigate = useNavigate();
 
   const [cont, setcont] = useState<number>(1);
@@ -85,10 +93,26 @@ const HomeModule = () => {
       <h1>
         hola soy el pokemon: {pokemonInfo !== null ? pokemonInfo.name : ""}
       </h1>
+
+
+      <h1>redux container {reduxContainer} </h1>
+      <button onClick={()=>dispatch(aumentarContadoren1())}>aumentar contador redux</button>
+      <button onClick={()=>dispatch(decrementarContadoren1())}>decrementar contador redux</button>
+      <button onClick={()=>dispatch(aumentarContador(10))}>aumentar en 10 contador redux</button>
+
+
+
+
+
+
+
+
       <h1>hola soy el pokemon: {pokemonInfo?.name} </h1>
       <h1>hola mi nombre es:</h1>
       <h1>{input} </h1>
-      <h1 className ={`${style['h1-clickeable']}`} onClick={alPresionar}>soy el ejemplo de card user</h1>
+      <h1 className={`${style["h1-clickeable"]}`} onClick={alPresionar}>
+        soy el ejemplo de card user
+      </h1>
       <div
         onClick={() => navigate("pokemon")}
         className={`${style["div-contenedor-card"]} 

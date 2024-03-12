@@ -5,8 +5,11 @@ import PokeCardParams from "../../pages/home/PokeCardParams";
 import { IpokemonInfo } from "../../interfaces/pokemonInformation/pokemon-interface";
 import { getPokemonApiInfo } from "../../services/pokeInfo-service";
 import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store/store";
 
 const PokemonModule = () => {
+  const { contador } = useSelector((state: RootState) => state.ejemplo);
   const navigate = useNavigate();
   const [pokemonInfo, setpokemonInfo] = useState<IpokemonInfo | null>(null);
 
@@ -38,6 +41,7 @@ const PokemonModule = () => {
   return (
     <div>
       <button onClick={() => navigate("/")}>atras</button>
+      <h1> contador del redux {contador} </h1>
       <div className={`${style["cards-div-container"]}`}>
         <PokeCard />
         <PokeCard />
