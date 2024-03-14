@@ -1,0 +1,30 @@
+.container-searcher {
+  width: 250px;
+  height: 30px;
+  border-radius: 999999px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 10px;
+}
+
+.backgroud {
+  background: white;
+}
+.icons-search {
+  height: 20px;
+  cursor: pointer;
+}
+
+.icons-grey {
+  color: grey;
+}
+.icons-red {
+  color: red;
+}
+.buscador-google {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+}

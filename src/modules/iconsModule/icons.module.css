@@ -1,15 +1,20 @@
 .div-container-module {
   background: cyan;
   height: 100vh;
+  display: flex;
 }
 
 .nav-bar-top {
   height: 70px;
+  width: 100%;
   background: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-inline: 100px;
+  position: absolute;
+  top: 0;
+  margin: auto;
 }
 
 .p-titles-sites {
@@ -60,4 +65,20 @@
   width: 300px;
   background: green;
   height: 100vh;
+}
+.body-container {
+  background: red;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding-top: 70px;
+}
+
+.body-container-on-red {
+  background: purple;
+  width: 100%;
+}
+
+.buscador-fondo-green {
+  background: green;
 }
