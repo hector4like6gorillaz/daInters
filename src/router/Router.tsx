@@ -6,12 +6,13 @@ import HomeModule from "../pages/home/HomeModule";
 import PokemonModule from "../modules/pokemonModule/PokemonModule";
 import EvolveLineModule from "../modules/evolveModule/EvolveLineModule";
 import IconsModule from "../modules/iconsModule/IconsModule";
+import TableroModule from "../modules/tableroModule/TableroModule";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomeModule />} />
+        <Route path="/" element={<TableroModule />} />
         <Route path="/pokemon" element={<PokemonModule />} />
         <Route path="/pokemon/:id" element={<PokemonModule />} />
         <Route path="/evolve-line/:id" element={<EvolveLineModule />} />
@@ -19,6 +20,7 @@ const Router = () => {
         <Route path="/icons" element={<IconsModule />} />
         {/*
         
+        <Route path="/" element={<HomeModule />} />
         <Route element={<NormalRoute />}>
           <Route path="/" element={<HomeModule />} />
         </Route>

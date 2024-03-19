@@ -1,0 +1,17 @@
+.container-button {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 15px;
+  background: #08b24c;
+  height: 25px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.container-button:hover {
+  background: #a8b24c;
+}
+.container-button:active {
+  background: blue;
+}

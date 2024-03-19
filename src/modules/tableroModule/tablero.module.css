@@ -1,0 +1,29 @@
+.container-table-module {
+  border: 2px solid;
+  padding-inline: 16px;
+}
+
+.module-title-h1 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+}
+.p-info {
+  margin: 0;
+  padding: 0;
+  height: 29px;
+  width: 100%;
+  background: #08b24c;
+  color: white;
+  border-radius: 3px;
+}
+
+.padre-contenedor {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  background: #d9d9d9;
+  padding-bottom: 19px;
+  padding-top: 19px;
+  padding-inline: 19px;
+}
